@@ -195,7 +195,7 @@ span{
 }
 
 .box{
-    height: 300px;
+    height: 320px;
     border: 2px solid black;
     width: 23%;
     background-color: white;
@@ -218,6 +218,8 @@ span{
 }
 
 .box-content p{
+    display: flex;
+    justify-content: center;
     color: #007185;
 }
 

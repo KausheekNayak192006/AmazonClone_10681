@@ -10,10 +10,10 @@
 <body>
     <header>
         <div class="navbar">
-            <div class="navlogo border">
+            <div class="navlogo border" onclick="scrollToTop()">
                 <div class="logo"></div>
             </div>
-            <div class="navaddress border">
+            <div class="navaddress border" id="addressSection">
                 <p class="Add-first">Deliver To</p>
                 <div class="navaddressicon">
                 <i class="fa-solid fa-location-dot"></i>
@@ -22,11 +22,18 @@
             </div>
             
             <div class="navsearch">
-                <select class="selectselect">
-                    <option>All</option>
+                <select class="selectselect" id="searchCategory">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home & Kitchen</option>
+                    <option value="books">Books</option>
+                    <option value="toys">Toys & Games</option>
                 </select>
-                <input class="searchsearch" placeholder="Search">
-                <div class="searchicon border"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <input class="searchsearch" id="searchInput" placeholder="Search Amazon.in" type="text">
+                <div class="searchicon border" onclick="performSearch()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
             </div>
 
             <div class="country border">
@@ -38,35 +45,38 @@
                 </div>
             </div>
 
-            <div class="nav-signin border">
-                <p><span>Sign in</span></p>
-                <p class="navsecond">Acc and lists</p>
+            <div class="nav-signin border" onclick="showSignInAlert()">
+                <p><span>Hello, Sign in</span></p>
+                <p class="navsecond">Account & Lists</p>
             </div>
-            <div class="nav-return border">
+            <div class="nav-return border" onclick="showOrdersAlert()">
                 <p><span>Returns</span></p>
                 <p class="navsecond">& Orders</p>
             </div>
 
-            <div class="cart border">
-                <div><i class="fa-solid fa-cart-shopping"></i></div>
+            <div class="cart border" onclick="showCartAlert()">
+                <div>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount" style="position: absolute; background: #f08804; color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 12px; margin-left: 12px; margin-top: -8px;">0</span>
+                </div>
                 <div>Cart</div>
             </div>
             
         </div>
         <div class="panel">
-            <div class="panel-all">
+            <div class="panel-all" onclick="toggleSidebar()">
                 <i class="fa-solid fa-bars"></i>
                 All
             </div>
                 <div class="panel-opps">
-                    <p>Todays deal</p>
-                    <p>Customer service</p>
-                    <p>Registry</p>
-                    <p>Gift card</p>
-                    <p>Sell</p>
+                    <p onclick="showDealsAlert()">Today's Deals</p>
+                    <p onclick="showServiceAlert()">Customer Service</p>
+                    <p onclick="showRegistryAlert()">Registry</p>
+                    <p onclick="showGiftCardAlert()">Gift Cards</p>
+                    <p onclick="showSellAlert()">Sell</p>
                 </div>
             <div class="panel-deals">
-                Shop deals in electronics
+                <span id="dealText">Shop deals in Electronics</span>
             </div>
         </div>
     </header>
@@ -75,16 +85,24 @@
     <div class="hero-section">
         <div class="carousel-container">
             <div class="carousel-slide active">
-                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/GW/Uber/Nov/D103625178_DesktopTallHero_3000x1200._CB542180708_.jpg" alt="Hero 1">
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/Wireless/devjyoti/GW/Uber/Nov/D103625178_DesktopTallHero_3000x1200._CB542180708_.jpg" alt="Wireless Devices Sale">
             </div>
             
             <div class="carousel-slide">
-                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/INSLGW/af_pc_2x._CB792409181_.jpg" alt="Hero 3">
-            </div>
-            <div class="carousel-slide">
-                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/OHL/24/BAU/feb/PC_hero_1_2x_1._CB582889946_.jpg" alt="Hero 4">
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/INSLGW/af_pc_2x._CB792409181_.jpg" alt="Amazon Fashion">
             </div>
             
+            <div class="carousel-slide">
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/OHL/24/BAU/feb/PC_hero_1_2x_1._CB582889946_.jpg" alt="Home Essentials">
+            </div>
+            
+            <div class="carousel-slide">
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Jupiter/Launches/T_Series/DesktopGateway_CategoryCard2x_758X608_T-Series._SY608_CB639883570_.jpg" alt="Electronics">
+            </div>
+            
+            <div class="carousel-slide">
+                <img src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-372x232----B08RDL6H79._SY232_CB667322346_.jpg" alt="Appliances">
+            </div>
 
             <!-- Carousel Navigation Arrows -->
             <button class="carousel-btn prev" onclick="moveSlide(-1)">
@@ -110,15 +128,15 @@
     </div>
 
     <div class="shop-section">
-        <div class="box1 box">
+        <div class="box1 box" onclick="navigateToCategory('gaming')">
             <div class="box-content">
-                <h2>Gaming accesories</h2>
+                <h2>Gaming Accessories</h2>
                     <div class="box-img" style="background-image: url('https://english.cdn.zeenews.com/sites/default/files/2024/08/01/1456452-tech-talk-gaming-pc-accessories-hero-image.jpeg');"></div>
                         <p>See More</p>
                     
             </div>
         </div>
-        <div class="box">
+        <div class="box" onclick="navigateToCategory('home')">
             <div class="box-content">
                 <h2>Home Essentials</h2>
                     <div class="box-img" style="background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2024/BAU2024Sept/CleaningTool_1x._SY116_CB563137408_.jpg');"></div>
@@ -126,7 +144,7 @@
                     
             </div>
         </div>
-        <div class="box">
+        <div class="box" onclick="navigateToCategory('fashion')">
             <div class="box-content">
                 <h2>Fashion</h2>
                     <div class="box-img" style="background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/AMAZON_FASHION/2022/SITE_FLIPS/SPR_22/GW/DQC/DQC_APR_TBYB_W_SHOES_1x._SY116_CB624172947_.jpg');"></div>
@@ -134,31 +152,31 @@
                     
             </div>
         </div>
-        <div class="box">
+        <div class="box" onclick="navigateToCategory('home-new')">
             <div class="box-content">
-                <h2>New arrival at home</h2>
+                <h2>New Arrivals at Home</h2>
                     <div class="box-img" style="background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/DiscoTec/2024/HomeLifestyle/HomeSummerFlip/Homepage/QuadCards/Home_Flip_Summer_2024_315_HP_NewArrivals_QuadCard_D_01_1x._SY116_CB555960040_.jpg');"></div>
                         <p>See More</p>
                     
             </div>
         </div>
-        <div class=" box">
+        <div class="box" onclick="navigateToCategory('kitchen')">
             <div class="box-content">
-                <h2>Kitechen ware</h2>
+                <h2>Kitchen Ware</h2>
                     <div class="box-img" style="background-image: url('https://m.media-amazon.com/images/I/313wAT6Iy2L._SY160_.jpg');"></div>
                         <p>See More</p>
                     
             </div>
         </div>
-        <div class=" box">
+        <div class="box" onclick="navigateToCategory('furniture')">
             <div class="box-content">
-                <h2>Refresh Yours Space</h2>
+                <h2>Refresh Your Space</h2>
                     <div class="box-img" style="background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/launchpad/2023/Gateway/January/DesktopQuadCat_186x116_LP-HP_B08MYX5Q2W_01.23._SY116_CB619238939_.jpg');"></div>
                         <p>See More</p>
                     
             </div>
         </div>
-        <div class=" box">
+        <div class="box" onclick="navigateToCategory('toys')">
             <div class="box-content">
                 <h2>Toys</h2>
                     <div class="box-img" style="background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Events/2023/EBF23/Fuji_Desktop_Single_image_EBF_1x_v3._SY304_CB573698005_.jpg');"></div>
@@ -166,7 +184,7 @@
                     
             </div>
         </div>
-        <div class=" box">
+        <div class="box" onclick="navigateToCategory('watches')">
             <div class="box-content">
                 <h2>Watches</h2>
                     <div class="box-img" style="background-image: url('https://oliverandclarke.com/cdn/shop/collections/ROLEX_DAYTONA_RED_REVPANDA_1_DARK_BANNERCROP.jpg?v=1716509548&width=5472');"></div>
@@ -182,109 +200,106 @@
             <h2 class="contact-title">Get In Touch With Us</h2>
             <p class="contact-subtitle">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
             
-           
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                        </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
 
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="Enter your email">
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    </div>
 
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="order">Order Related</option>
-                                <option value="product">Product Inquiry</option>
-                                <option value="shipping">Shipping & Delivery</option>
-                                <option value="returns">Returns & Refunds</option>
-                                <option value="account">Account Issues</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="order">Order Related</option>
+                            <option value="product">Product Inquiry</option>
+                            <option value="shipping">Shipping & Delivery</option>
+                            <option value="returns">Returns & Refunds</option>
+                            <option value="account">Account Issues</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+                    </div>
 
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footpanel1">Back To Top</div>
+        <div class="footpanel1" onclick="scrollToTop()">Back To Top</div>
         <div class="footpanel2">
             <ul>
                 <p>Get to Know Us</p>
-                <a>Careers</a>
-                <a>Blog</a>
-                <a>About Amazon</a>
-                <a>Investor Relations</a>
-                <a>Amazon Devices</a>
-                <a>Amazon Science</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Careers')">Careers</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Blog')">Blog</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('About Amazon')">About Amazon</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Investor Relations')">Investor Relations</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Amazon Devices')">Amazon Devices</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Amazon Science')">Amazon Science</a>
             </ul>
             <ul>
                 <p>Make Money with Us</p>
-                <a>Sell products on Amazon</a>
-                <a>Sell on Amazon Business</a>
-                <a>Sell apps on Amazon</a>
-                <a>Become an Affiliate</a>
-                <a>Advertise Your Products</a>
-                <a>Self-Publish with Us</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Sell products')">Sell products on Amazon</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Sell on Business')">Sell on Amazon Business</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Sell apps')">Sell apps on Amazon</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Become Affiliate')">Become an Affiliate</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Advertise')">Advertise Your Products</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Self-Publish')">Self-Publish with Us</a>
             </ul>
             <ul>
                 <p>Amazon Payment Products</p>
-                <a>Amazon Business Card</a>
-                <a>Shop with Points</a>
-                <a>Reload Your Balance</a>
-                <a>Amazon Currency Converter</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Business Card')">Amazon Business Card</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Shop with Points')">Shop with Points</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Reload Balance')">Reload Your Balance</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Currency Converter')">Amazon Currency Converter</a>
             </ul>
             <ul>
                 <p>Let Us Help You</p>
-                <a>Amazon and COVID-19</a>
-                <a>Your Account</a>
-                <a>Your Orders</a>
-                <a>Shipping Rates & Policies</a>
-                <a>Returns & Replacements</a>
-                <a>Manage Your Content and Devices</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('COVID-19')">Amazon and COVID-19</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Your Account')">Your Account</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Your Orders')">Your Orders</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Shipping Rates')">Shipping Rates & Policies</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Returns')">Returns & Replacements</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Manage Content')">Manage Your Content and Devices</a>
             </ul>
         </div>
         <div class="footpanel3">
-            <div class="logofoot"></div>
+            <div class="logofoot" onclick="scrollToTop()"></div>
         </div>
         <div class="panel4">
             <div class="pages">
-                <a>Condition of use</a>
-                <a>Privacy Notice</a>
-                <a>Consumer Health Data Privacy Disclosure</a>
-                <a>Your Ads Privacy Choices</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Conditions')">Conditions of Use</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Privacy')">Privacy Notice</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Consumer Health')">Consumer Health Data Privacy Disclosure</a>
+                <a href="javascript:void(0)" onclick="showInfoAlert('Ads Privacy')">Your Ads Privacy Choices</a>
             </div>
             <div class="copyright">
                 © 1996-2024, Amazon.com, Inc. or its affiliates
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+    <!-- JavaScript Code -->
     <script>
-        // Carousel Functionality
+        // ==================== CAROUSEL FUNCTIONALITY ====================
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
@@ -350,31 +365,382 @@
             startAutoSlide();
         });
 
-       // Initialize EmailJS
-emailjs.init("pNIOCOdJqzz_3qpAE");
-
-// Contact Form Submission using EmailJS
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    emailjs.sendForm("service_1vt9pgq", "template_320ufoa", this)
-        .then(function() {
-            alert("✅ Message sent successfully! We will contact you soon.");
-            document.getElementById('contactForm').reset();
-        }, function(error) {
-            alert("❌ Failed to send message. Please try again.");
-            console.log("EmailJS Error:", error);
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                moveSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                moveSlide(1);
+            }
         });
-});
 
+        // ==================== SEARCH FUNCTIONALITY ====================
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput').value;
+            const category = document.getElementById('searchCategory').value;
+            
+            if (searchInput.trim() === '') {
+                alert('⚠️ Please enter a search term');
+                return;
+            }
+            
+            // Simulate search
+            alert(`🔍 Searching for "${searchInput}" in ${category === 'all' ? 'All Categories' : category}...\n\nThis is a demo. In a real application, this would redirect to search results.`);
+            
+            // Optional: Clear search after searching
+            // document.getElementById('searchInput').value = '';
+        }
 
-        // Smooth scroll to top
-        document.querySelector('.footpanel1').addEventListener('click', function() {
+        // Allow Enter key to search
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // ==================== CART FUNCTIONALITY ====================
+        let cartItems = 0;
+
+        function showCartAlert() {
+            if (cartItems === 0) {
+                alert('🛒 Your cart is empty!\n\nStart shopping to add items to your cart.');
+            } else {
+                alert(`🛒 You have ${cartItems} item(s) in your cart.`);
+            }
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cartItems;
+        }
+
+        // Simulate adding items to cart when clicking product boxes
+        function navigateToCategory(category) {
+            const confirmAdd = confirm(`Would you like to add an item from ${category} category to your cart?`);
+            if (confirmAdd) {
+                cartItems++;
+                updateCartCount();
+                showNotification(`✅ Item added to cart!`);
+            }
+        }
+
+        // ==================== NOTIFICATION SYSTEM ====================
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: #232f3e;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 1000;
+                animation: slideIn 0.5s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ==================== NAVIGATION ALERTS ====================
+        function showSignInAlert() {
+            alert('👤 Sign In\n\nThis is a demo website. In a real application, this would open the sign-in page.');
+        }
+
+        function showOrdersAlert() {
+            alert('📦 Returns & Orders\n\nView your order history and manage returns here.\n\nThis is a demo feature.');
+        }
+
+        function showDealsAlert() {
+            alert('🎉 Today\'s Deals\n\nCheck out amazing deals and limited-time offers!\n\nThis is a demo feature.');
+        }
+
+        function showServiceAlert() {
+            alert('📞 Customer Service\n\nNeed help? Our customer service team is here for you 24/7!\n\nThis is a demo feature.');
+        }
+
+        function showRegistryAlert() {
+            alert('📋 Registry\n\nCreate or find a registry for weddings, babies, and more!\n\nThis is a demo feature.');
+        }
+
+        function showGiftCardAlert() {
+            alert('🎁 Gift Cards\n\nPerfect for every occasion. Available in various denominations!\n\nThis is a demo feature.');
+        }
+
+        function showSellAlert() {
+            alert('💼 Sell on Amazon\n\nStart your business and reach millions of customers!\n\nThis is a demo feature.');
+        }
+
+        function showInfoAlert(section) {
+            alert(`ℹ️ ${section}\n\nThis would take you to the ${section} page.\n\nThis is a demo website.`);
+        }
+
+        function toggleSidebar() {
+            alert('☰ All Categories\n\nThis would open the categories sidebar menu.\n\nThis is a demo feature.');
+        }
+
+        // ==================== SCROLL TO TOP ====================
+        function scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+        }
+
+        // ==================== ROTATING DEALS TEXT ====================
+        const dealTexts = [
+            'Shop deals in Electronics',
+            'Great Indian Festival - Special Offers',
+            'Fashion Sale - Up to 70% Off',
+            'Home & Kitchen - Best Prices',
+            'Books - Huge Discounts'
+        ];
+        let currentDealIndex = 0;
+
+        function rotateDealText() {
+            currentDealIndex = (currentDealIndex + 1) % dealTexts.length;
+            const dealElement = document.getElementById('dealText');
+            dealElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                dealElement.textContent = dealTexts[currentDealIndex];
+                dealElement.style.opacity = '1';
+            }, 300);
+        }
+
+        // Rotate deal text every 4 seconds
+        setInterval(rotateDealText, 4000);
+
+        // Add smooth transition for deal text
+        document.getElementById('dealText').style.transition = 'opacity 0.3s ease';
+
+        // ==================== CONTACT FORM HANDLING ====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+                alert('⚠️ Please fill in all required fields!');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('⚠️ Please enter a valid email address!');
+                return;
+            }
+            
+            // Show success message
+            alert(`✅ Thank you, ${name}!\n\nYour message has been sent successfully.\n\nSubject: ${subject}\n\nWe'll get back to you at ${email} soon!`);
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Show notification
+            showNotification('✅ Message sent successfully!');
         });
+
+        // ==================== FORM INPUT ANIMATIONS ====================
+        const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // ==================== BOXES HOVER EFFECT WITH SOUND ====================
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach((box, index) => {
+            box.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // ==================== DYNAMIC TIME-BASED GREETING ====================
+        function setGreeting() {
+            const hour = new Date().getHours();
+            const signinElement = document.querySelector('.nav-signin span');
+            
+            if (hour < 12) {
+                signinElement.textContent = 'Good Morning, Sign in';
+            } else if (hour < 18) {
+                signinElement.textContent = 'Good Afternoon, Sign in';
+            } else {
+                signinElement.textContent = 'Good Evening, Sign in';
+            }
+        }
+
+        // Set greeting on page load
+        setGreeting();
+
+        // ==================== SCROLL ANIMATION FOR BOXES ====================
+        function animateOnScroll() {
+            const boxes = document.querySelectorAll('.box');
+            
+            boxes.forEach(box => {
+                const boxTop = box.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (boxTop < windowHeight - 100) {
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initial styles for boxes
+        boxes.forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateY(50px)';
+            box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Trigger animation on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger on page load
+        animateOnScroll();
+
+        // ==================== BACK TO TOP BUTTON VISIBILITY ====================
+        const backToTopBtn = document.querySelector('.footpanel1');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+            } else {
+                backToTopBtn.style.opacity = '0.7';
+            }
+        });
+
+        // ==================== SEARCH SUGGESTIONS (DEMO) ====================
+        const searchSuggestions = [
+            'iPhone 15',
+            'Samsung Galaxy',
+            'Laptop',
+            'Headphones',
+            'Smart Watch',
+            'Gaming Console',
+            'Books',
+            'Fashion'
+        ];
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const value = this.value.toLowerCase();
+            
+            // This is where you would show suggestions
+            // For demo purposes, we're just logging
+            if (value.length > 2) {
+                const matches = searchSuggestions.filter(item => 
+                    item.toLowerCase().includes(value)
+                );
+                console.log('Search suggestions:', matches);
+            }
+        });
+
+        // ==================== PAGE LOAD ANIMATION ====================
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification('🎉 Welcome to Amazon Clone!');
+            }, 1000);
+        });
+
+        // ==================== CONSOLE MESSAGE ====================
+        console.log('%c🚀 Amazon Clone Website', 'color: #ff9900; font-size: 24px; font-weight: bold;');
+        console.log('%cBuilt with HTML, CSS & JavaScript', 'color: #232f3e; font-size: 14px;');
+        console.log('%c⚡ All features are fully interactive!', 'color: #007185; font-size: 12px;');
+
+        // ==================== PREVENT CONTEXT MENU (Optional) ====================
+        // Uncomment to disable right-click
+        // document.addEventListener('contextmenu', function(e) {
+        //     e.preventDefault();
+        //     alert('Right-click is disabled on this demo site.');
+        // });
+
+        // ==================== EASTER EGG ====================
+        let secretCode = '';
+        const secretSequence = 'amazon';
+
+        document.addEventListener('keypress', function(e) {
+            secretCode += e.key.toLowerCase();
+            
+            if (secretCode.includes(secretSequence)) {
+                alert('🎉 Easter Egg Found!\n\nYou discovered the secret code!\n\n🏆 Congratulations!');
+                secretCode = '';
+                
+                // Add confetti effect (visual enhancement)
+                document.body.style.background = 'linear-gradient(45deg, #ff9900, #232f3e)';
+                setTimeout(() => {
+                    document.body.style.background = '';
+                }, 2000);
+            }
+            
+            // Reset if too long
+            if (secretCode.length > 10) {
+                secretCode = '';
+            }
+        });
+
     </script>
 </body>
 </html>
